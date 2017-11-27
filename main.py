@@ -11,6 +11,7 @@ import glob
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.naive_bayes import MultinomialNB
 
 
 category_list = ["sport", "world", "us", "business", "health", "entertainment", "sci_tech"]
@@ -49,7 +50,7 @@ X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
 #SAVE TF-IDF
 pickle.dump(tfidf_transformer, open("tfidf.pkl","wb"))
 
-from sklearn.naive_bayes import MultinomialNB
+
 clf = MultinomialNB().fit(X_train_tfidf, training_data.flag)
 
 #SAVE MODEL
